@@ -1,7 +1,7 @@
 var fs = require('fs');
 var Firebase = require('firebase');
 var parse = require('csv-parse')
-var publisherBase = 'https://vivid-heat-6256.firebaseio.com/publishers/';
+var firebaseUrl = 'https://vivid-heat-6256.firebaseio.com/';
 
 //Here we define our parser, and let it know to expect a header in our source data
 var parser = parse({columns: true});
@@ -9,8 +9,9 @@ var parser = parse({columns: true});
 //parser events - TODO: handle errors
 parser.on('readable', function() {
   while(record = parser.read()){
-    var jsonRecord = csvToJs(record);
-    pushToFirebase(jsonRecord);
+    var jsRecord = csvToJs(record);
+    var firebaseKey = getFirebaseUid(jsRecord);
+    pushToFirebase(jsRecord, firebaseKey);
   }
 });
 
@@ -20,15 +21,35 @@ readStream.pipe(parser);
 
 /**************HELPERS**************/
 
-function pushToFirebase(obj) {
+function pushToFirebase(obj, key) {
+  pushPublisherToFirebase(obj, key)
+  pushRatingsToFirebase(key);
+};
+
+function getFirebaseUid(obj) {
   // Right now we use domain as the unique key, or else company name
   // We should enforce that domains must be present in seed
   // TODO: escape these keys properly - path can't contain ".", "#", "$", "[", or "]"
   var key = obj.domain.full || obj.company;
-  key = key.split('/')[0].split('.').join('');
+  return key.split('/')[0].split('.').join('');
+};
 
-  var firebaseTarget = new Firebase(publisherBase + key);
-  firebaseTarget.set(obj);
+function pushPublisherToFirebase(publisherObj, key) {
+  var firebaseTarget = new Firebase(firebaseUrl + 'publishers/' + key);
+  firebaseTarget.set(publisherObj);
+};
+
+function pushRatingsToFirebase(key) {
+  var firebaseTarget = new Firebase(firebaseUrl + 'ratings/' + key);
+  var payload = {
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+    average: 0
+  };
+  firebaseTarget.set(payload);
 };
 
 function csvToJs(csvRecord) {
@@ -98,16 +119,6 @@ function csvToJs(csvRecord) {
   transformed.channels.videoSSP = stringToBool(csvRecord['Video SSP']);
   transformed.channels.mobile = stringToBool(csvRecord.Mobile);
   transformed.channels.mobileSSP = stringToBool(csvRecord['Mobile SSP']);
-
-  //ratings
-  transformed.ratings = {
-    1: 0,
-    2: 0,
-    3: 0,
-    4: 0,
-    5: 0,
-    average: 0
-  };
 
   //notes
   transformed.notes = [];
