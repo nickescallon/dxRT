@@ -1,8 +1,10 @@
 {
   "publishers": {
-    "domain": "247sports.com",
-    "name": "247sports",
-    "suffix": ".com",
+    "domain": {
+      "full": "247sports.com",
+      "name": "247sports",
+      "suffix": ".com"
+    },
     "company": "24/7 Sports",
     "tier1IABcategory": "Sports",
     "audience": "",
@@ -10,7 +12,7 @@
       "name": "",
       "email": ""
     }],
-    "SSPaffiliation": "Google AdX",
+    "sspAffiliation": "Google AdX",
     "alwaysOn": false,
     "ratings": {
       "1": 0,
@@ -28,7 +30,7 @@
       "mobileSSP": false
     },
     "availability": 0,
-    "programaticPartners": {
+    "programmaticDirect": {
       "us": [""],
       "restOfWorld": [""]
     },

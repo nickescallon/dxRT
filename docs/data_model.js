@@ -1,8 +1,10 @@
 {
   publishers: {
-    domain: '247sports.com',
-    name: '247sports',
-    suffix: '.com',
+    domain: {
+      full: '247sports.com',
+      name: '247sports',
+      suffix: '.com'
+    },
     company: '24/7 Sports',
     tier1IABcategory: 'Sports',
     audience: null, //string
@@ -10,7 +12,7 @@
       name: null, //string
       email: null //string
     }],
-    SSPaffiliation: 'Google AdX',
+    sspAffiliation: 'Google AdX',
     alwaysOn: false, //bool
     ratings: {
       1: 0, //all ratings default to 0
@@ -28,7 +30,7 @@
       mobileSSP: false
     },
     availability: null, //number, represents millions/month
-    programaticPartners: {
+    programmaticDirect: {
       us: [], //array of strings
       restOfWorld: []
     },
