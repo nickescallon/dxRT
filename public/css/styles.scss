@@ -1,8 +1,37 @@
-.container {
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  position: fixed;
+  height: 150px;
+  width: 100%;
+  background: #dc143c;
+}
+
+section {
+  position: fixed;
+  display: flex;
+  top: 150px;
   height: 600px;
-  width: 60%;
+  width: 100%;
   background: #87CEEB;
-  overflow-y: scroll;
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    height: 100%;
+    width: 1070px;
+    overflow-y: scroll;
+  }
+
+  .sidebar {
+    position: relative;
+    flex: 1;
+    background: yellow;
+  }
 }
 
 .tile {
@@ -11,11 +40,28 @@
   width: 200px;
   margin: 5px;
   background: #6A5ACD;
-  float: left;
   h1 {
     position: absolute;
     top: 50%;
     text-align: center;
     color: white;
   }
+}
+.tile:hover {
+  position: absolute;
+  top:0;
+  left:0;
+  height: 600px;
+  width: 100%;
+  margin:0;
+  z-index: 99;
+  -webkit-transition: 1s;
+}
+
+footer {
+  position: fixed;
+  top: 750px;
+  bottom: 0;
+  width: 100%;
+  background: #dc143c;
 }
