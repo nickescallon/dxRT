@@ -7,7 +7,7 @@ function topTen() {
   console.log('getting top 10 highest rated publishers');
   var ratings = new Firebase(firebaseUrl + '/ratings');
 
-  ratings.limitToFirst(10).endAt().on('child_added', function(rating) {
+  ratings.limitToLast(10).on('child_added', function(rating) {
     var publisher = new Firebase( firebaseUrl + '/publishers/' );
 
     publisher.child( rating.key() ).once('value', function(publisher) {
