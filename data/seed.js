@@ -1,7 +1,7 @@
 var fs = require('fs');
 var Firebase = require('firebase');
 var parse = require('csv-parse')
-var publishers = new Firebase('https://vivid-heat-6256.firebaseio.com/publishers');
+var publisherBase = 'https://vivid-heat-6256.firebaseio.com/publishers/';
 
 //Here we define our parser, and let it know to expect a header in our source data
 var parser = parse({columns: true});
@@ -14,11 +14,6 @@ parser.on('readable', function() {
   }
 });
 
-//When we're done piping the stream, end the script
-parser.on('unpipe', function() {
-  process.exit();
-});
-
 //Here we read the source file and pipe it to the parser
 var readStream = fs.createReadStream(__dirname + '/data.csv');
 readStream.pipe(parser);
@@ -26,7 +21,14 @@ readStream.pipe(parser);
 /**************HELPERS**************/
 
 function pushToFirebase(obj) {
-  publishers.push(obj);
+  // Right now we use domain as the unique key, or else company name
+  // We should enforce that domains must be present in seed
+  // TODO: escape these keys properly - path can't contain ".", "#", "$", "[", or "]"
+  var key = obj.domain.full || obj.company;
+  key = key.split('/')[0].split('.').join('');
+
+  var firebaseTarget = new Firebase(publisherBase + key);
+  firebaseTarget.set(obj);
 };
 
 function csvToJs(csvRecord) {
