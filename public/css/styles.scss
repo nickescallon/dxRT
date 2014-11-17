@@ -1,0 +1,21 @@
+.container {
+  height: 600px;
+  width: 60%;
+  background: #87CEEB;
+  overflow-y: scroll;
+}
+
+.tile {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  margin: 5px;
+  background: #6A5ACD;
+  float: left;
+  h1 {
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    color: white;
+  }
+}
