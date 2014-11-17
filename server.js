@@ -3,15 +3,15 @@ var http = require('http');
 
 var app = express();
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 4000);
 
 // Servce static assets
-app.use('/dist',  express.static(__dirname + '/dist'));
-app.use('/images',  express.static(__dirname + '/public/images'));
+app.use('/',  express.static(__dirname + '/dist'));
+app.use('/images',  express.static(__dirname + '/dist/images'));
 
 // Routes - catch-all to return index.html
 app.get('*', function (req, res) {
-  res.sendFile(__dirname + '/public/index.html');
+  res.sendFile(__dirname + '/dist/index.html');
 });
 
 var server = http.createServer(app);
