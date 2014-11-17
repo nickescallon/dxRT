@@ -7,6 +7,20 @@ module.exports = function(grunt) {
     scssDir: 'public/css/',
     cssDistDir: 'dist/stylesheets/',
     pkg: grunt.file.readJSON('package.json'),
+    copy: {
+      index: {
+        expand: true,
+        cwd: 'public/',
+        src: 'index.html',
+        dest: 'dist/'
+      },
+      images: {
+        expand: true,
+        cwd: 'public/',
+        src: 'images/*',
+        dest: 'dist/'
+      }
+    },
     concat: {
       js: {
         options: {
@@ -60,8 +74,8 @@ module.exports = function(grunt) {
     },
     watch: {
       // TODO: Do these tasks conditionally?
-      files: ['<%=jsAppDir%>**/*.js', '<%=jsVendorDir%>**/*.js', '<%=scssDir%>*.scss'],
-      tasks: ['concat', 'sass', 'uglify', 'cssmin']
+      files: ['<%=jsAppDir%>**/*.js', '<%=jsVendorDir%>**/*.js', '<%=scssDir%>*.scss', 'public/index.html', 'public/images/*'],
+      tasks: ['copy', 'concat', 'sass', 'uglify', 'cssmin']
     }
   });
 
@@ -70,8 +84,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   grunt.registerTask('default', [
+    'copy',
     'concat',
     'uglify',
     'cssmin',
