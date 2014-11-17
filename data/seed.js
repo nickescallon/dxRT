@@ -1,21 +1,29 @@
 var fs = require('fs');
 var Firebase = require('firebase');
-// var parser = require('csv-parse')();
+var parse = require('csv-parse')
 var publishers = new Firebase('https://vivid-heat-6256.firebaseio.com/publishers');
 
-
-var parse = require('csv-parse')
+//Here we define our parser, and let it know to expect a header in our source data
 var parser = parse({columns: true});
 
-//parser events
+//parser events - TODO: handle errors
 parser.on('readable', function() {
   while(record = parser.read()){
-    var fbRecord = csvToJs(record);
-    console.log(fbRecord);
-    pushToFirebase(fbRecord);
+    var jsonRecord = csvToJs(record);
+    pushToFirebase(jsonRecord);
   }
 });
-//TODO: handle errors
+
+//When we're done piping the stream, end the script
+parser.on('unpipe', function() {
+  process.exit();
+});
+
+//Here we read the source file and pipe it to the parser
+var readStream = fs.createReadStream(__dirname + '/data.csv');
+readStream.pipe(parser);
+
+/**************HELPERS**************/
 
 function pushToFirebase(obj) {
   publishers.push(obj);
@@ -142,8 +150,3 @@ function csvToJs(csvRecord) {
 
   return transformed;
 };
-
-
-var readStream = fs.createReadStream(__dirname + '/data.csv');
-readStream.pipe(parser);
-
