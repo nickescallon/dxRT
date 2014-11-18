@@ -64,6 +64,7 @@ section {
       margin: 5px;
       background: #6A5ACD;
       opacity: 1;
+      box-shadow: 4px 4px 4px grey;
       -webkit-transition:all linear 1s;
       transition:all linear 1s;
 
@@ -90,6 +91,13 @@ section {
         width: 0px;
       }
     }
+
+    // .tile:hover {
+    //   transform: scale(1.02);
+    //   box-shadow: 8px 8px 8px grey;
+    //   -webkit-transition:all linear 1s;
+    //   transition:all linear 1s;
+    // }
 
     // Tile Animations
     .tile.ng-enter {
