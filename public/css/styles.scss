@@ -76,7 +76,18 @@ section {
         padding: 15px;
         z-index: 99;
         background: #6A5ACD;
-        -webkit-transition: 0.5s;
+      }
+      // selected animations
+      .selected.ng-hide-add, .selected.ng-hide-remove {
+        transition:0s linear all;
+      }
+      .selected.ng-hide-add-active,
+      .selected.ng-hide-remove-active {
+        transition:0.5s linear all;
+      }
+      .selected.ng-hide {
+        // height: 0px; //slider?
+        width: 0px;
       }
     }
 
@@ -100,7 +111,6 @@ section {
       -webkit-transition:all linear 0s;
       transition:all linear 0s;
     }
-
   }
 
   .sidebar {
@@ -114,7 +124,7 @@ section {
 .clear {
   height: 30px;
   width: 80px;
-  background: white;
+  float: right;
 }
 
 footer {
