@@ -1,13 +1,16 @@
 (function() {
   'use strict'
 
-  angular.module('rottenPublishers.services.publishers', [])
+  angular.module('rottenPublishers.services.publishers', ['firebase'])
   .factory('publishers', publishers);
 
-  function publishers() {
+  publishers.$inject = ['$firebase'];
+  function publishers($firebase) {
+    var publishers = new Firebase('https://vivid-heat-6256.firebaseio.com/publishers');
+    var sync = $firebase(publishers);
 
     var service = {
-      publishers: { data: [] }
+      data: sync.$asArray()
     };
 
     return service;
