@@ -4,24 +4,30 @@
   <link href="/stylesheets/rotten-publishers.css" media="screen" rel="stylesheet" type="text/css">
 </head>
 <body ng-app="rottenPublishers" ng-controller="homeController as home">
-  <header>
-    <div>
-      <input ng-model="home.search" placeholder="search here..."/>
-    <div>
-  </header>
+  <header></header>
+
+  <div class="search">
+    <input ng-model="home.search" placeholder="search by publisher domain, company, rating etc..."/>
+  </div>
 
   <section ng-cloak>
+
     <div class="container">
       <div class="tile" ng-repeat="publisher in home.publishers | filter:home.search"
-        ng-click="home.select($event, $index)">
-          {{ ::publisher.domain.full }}
-          <div class="selected" ng-show="home.selected === $index">
-            <div ng-click="home.select($event)">CLEAR</div>
-          </div>
+      ng-click="home.select($event, $index)">
+
+        <div>domain: {{ ::publisher.domain.full }}</div>
+        <div>rating: {{ home.ratings[publisher.$id].average }}</div>
+
+        <div class="selected" ng-show="home.selected === $index">
+          <div class="clear" ng-click="home.select($event)">CLEAR</div>
+        </div>
+
       </div>
     </div>
-    <div class='sidebar'>
-    </div>
+
+    <div class='sidebar'></div>
+
   </section>
 
   <footer>

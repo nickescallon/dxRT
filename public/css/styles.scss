@@ -12,26 +12,31 @@ h1 {
 
 header {
   position: fixed;
-  height: 150px;
+  top: 0;
+  height: 115px;
   width: 100%;
   min-width: 630px;
   background: #dc143c;
+}
 
-  //hack - replace
-  div {
-    position: relative;
-    text-align: center;
-    top: 50%;
+.search {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  top: 95px;
+  height: 55px;
+  width: 100%;
+  min-width: 630px;
+  padding-left: 15px; //
+  background: blue;
 
-    input {
-      height: 15px;
-      width: 400px;
-      padding: 20px;
-      font-size: 15px;
-      border-radius: 5px;
-      background: lightgrey;
-      opacity: .5;
-    }
+  input {
+    height: 15px;
+    width: 400px;
+    padding: 15px;
+    font-size: 15px;
+    background: white;
+    opacity: .5;
   }
 }
 
@@ -52,11 +57,16 @@ section {
     height: 100%;
     min-width: 630px;
     overflow-y: scroll;
+
     .tile {
       height: 200px;
       width: 200px;
       margin: 5px;
       background: #6A5ACD;
+      opacity: 1;
+      -webkit-transition:all linear 1s;
+      transition:all linear 1s;
+
       .selected { //this will be a class added on ng click
         position: absolute;
         top:0;
@@ -66,9 +76,31 @@ section {
         padding: 15px;
         z-index: 99;
         background: #6A5ACD;
-        -webkit-transition: 1s;
+        -webkit-transition: 0.5s;
       }
     }
+
+    // Tile Animations
+    .tile.ng-enter {
+      opacity: 0;
+    }
+    .tile.ng-enter-stagger {
+      -webkit-transition-delay: 0.1s;
+      transition-delay: 0.1s;
+
+      // To avoid CSS inheritance
+      -webkit-transition-duration: 0s;
+      transition-duration: 0s;
+    }
+    .tile.ng-enter.ng-enter-active {
+      opacity: 1;
+    }
+    .tile.ng-leave, .title.ng-leave-active {
+      opacity: 0;
+      -webkit-transition:all linear 0s;
+      transition:all linear 0s;
+    }
+
   }
 
   .sidebar {
@@ -76,6 +108,13 @@ section {
     flex: 1;
     background: yellow;
   }
+}
+
+//temp
+.clear {
+  height: 30px;
+  width: 80px;
+  background: white;
 }
 
 footer {
