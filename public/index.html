@@ -6,15 +6,18 @@
 <body ng-app="rottenPublishers" ng-controller="homeController as home">
   <header>
     <div>
-      <input placeholder="search here..."/>
+      <input ng-model="home.search" placeholder="search here..."/>
     <div>
   </header>
 
-  <section>
+  <section ng-cloak>
     <div class="container">
-      <div class="tile" ng-repeat="publisher in home.publishers"
-        ng-click="home.select($index)" ng-class="{selected: $index === home.selected}">
+      <div class="tile" ng-repeat="publisher in home.publishers | filter:home.search"
+        ng-click="home.select($event, $index)">
           {{ ::publisher.domain.full }}
+          <div class="selected" ng-show="home.selected === $index">
+            <div ng-click="home.select($event)">CLEAR</div>
+          </div>
       </div>
     </div>
     <div class='sidebar'>

@@ -53,22 +53,21 @@ section {
     min-width: 630px;
     overflow-y: scroll;
     .tile {
-      position: relative;
       height: 200px;
       width: 200px;
       margin: 5px;
       background: #6A5ACD;
-      -webkit-transition: 1s;
-    }
-    .tile.selected { //this will be a class added on ng click
-      position: absolute;
-      top:0;
-      left:0;
-      right:0;
-      height: 600px;
-      width: 100%;
-      margin:0;
-      z-index: 99;
+      .selected { //this will be a class added on ng click
+        position: absolute;
+        top:0;
+        left:0;
+        height: 600px;
+        width: 100%;
+        padding: 15px;
+        z-index: 99;
+        background: #6A5ACD;
+        -webkit-transition: 1s;
+      }
     }
   }
 

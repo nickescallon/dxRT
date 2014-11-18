@@ -11,7 +11,8 @@
     vm.publishers = publishers.data;
     vm.select = select;
 
-    function select(index) {
+    function select($event, index) {
+      $event.stopPropagation();
       vm.selected = index;
     };
   };
