@@ -14,6 +14,7 @@ header {
   position: fixed;
   height: 150px;
   width: 100%;
+  min-width: 630px;
   background: #dc143c;
 
   //hack - replace
@@ -32,8 +33,6 @@ header {
       opacity: .5;
     }
   }
-
-
 }
 
 section {
@@ -47,9 +46,11 @@ section {
   .container {
     display: flex;
     flex-wrap: wrap;
+    flex: 2;
     align-content: flex-start;
+    justify-content: center;
     height: 100%;
-    width: 1070px;
+    min-width: 630px;
     overflow-y: scroll;
     .tile {
       position: relative;
