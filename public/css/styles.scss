@@ -31,148 +31,251 @@ h1 {
   color: white;
 }
 
-header {
-  position: fixed;
-  top: 0;
-  height: 115px;
-  width: 100%;
-  min-width: 630px;
-  background: $color-dataxu-red;
-}
-
-.search {
+.container-main {
   position: fixed;
   display: flex;
-  align-items: center;
-  top: 95px;
-  height: 55px;
+  flex-direction: column;
+  height: 100%;
   width: 100%;
-  min-width: 630px;
-  padding-left: 15px; //remove?
-  background: $color-dataxu-blue;
 
-  input {
-    height: 15px;
-    width: 400px;
-    padding: 15px;
-    font-size: 15px;
-    background: white;
-    opacity: .5;
+  header {
+    height: 55px;
+    width: 100%;
+    background: $color-dataxu-red;
   }
-}
 
-section {
-  position: fixed;
-  display: flex;
-  top: 150px;
-  height: 600px;
-  width: 100%;
-  background: #6CAAE4;
-
-  .container {
+  .container-search {
+    position:relative;
     display: flex;
-    flex-wrap: wrap;
-    flex: 2;
-    align-content: flex-start;
-    justify-content: left;
-    height: 100%;
-    min-width: 650px;
-    overflow-x: hidden;
-    overflow-y: scroll;
+    height: 55px;
+    width: 100%;
+    background: $color-dataxu-blue;
+    box-shadow: 0 4px 2px -2px gray;
+    z-index: 99; //for box shadow
 
-    .tile {
-      height: 200px;
-      width: 200px;
-      margin: 10px;
-      background: $color-dataxu-white;
-      opacity: 1;
-      box-shadow: 4px 4px 4px grey;
-      -webkit-transition:all linear 1s;
-      transition:all linear 1s;
+    .col-flex {
+      display: flex;
+      flex: 1;
+      height: 100%;
+      min-width: 450px;
+      align-items: center;
+      padding: 0px 15px;
 
-      .heading {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 50px;
-        width: 200px;
-        overflow: hidden;
-        background: $color-dataxu-blue;
-        color: $color-dataxu-white;
+      input {
+        width: 400px;
+        font-size: 20px;
+        background: white;
+        opacity: .5;
       }
-
-      .selected { //this will be a class added on ng click
-        position: absolute;
-        top:0;
-        left:0;
-        height: 600px;
-        width: 100%;
-        padding: 15px;
-        z-index: 99;
-        background: $color-dataxu-white;
+      input:focus {
+        opacity: 1;
       }
-      // selected animations
-      .selected.ng-hide-add, .selected.ng-hide-remove {
-        transition:0s linear all;
-      }
-      .selected.ng-hide-add-active,
-      .selected.ng-hide-remove-active {
-        transition:0.5s linear all;
-      }
-      .selected.ng-hide {
-        // height: 0px; //slider?
-        width: 0px;
-      }
-    }
-
-    // .tile:hover {
-    //   transform: scale(1.02);
-    //   box-shadow: 8px 8px 8px grey;
-    //   -webkit-transition:all linear 1s;
-    //   transition:all linear 1s;
-    // }
-
-    // Tile Animations
-    .tile.ng-enter {
-      opacity: 0;
-    }
-    .tile.ng-enter-stagger {
-      -webkit-transition-delay: 0.1s;
-      transition-delay: 0.1s;
-
-      // To avoid CSS inheritance
-      -webkit-transition-duration: 0s;
-      transition-duration: 0s;
-    }
-    .tile.ng-enter.ng-enter-active {
-      opacity: 1;
-    }
-    .tile.ng-leave, .title.ng-leave-active {
-      opacity: 0;
-      -webkit-transition:all linear 0s;
-      transition:all linear 0s;
     }
   }
 
-  .sidebar {
+  .container-content {
     position: relative;
+    display: flex;
     flex: 1;
-    background: #D0D2D3;
   }
 }
 
-//temp
-.clear {
-  height: 30px;
-  width: 80px;
-  float: right;
+.container-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 2;
+  align-content: flex-start;
+  justify-content: left;
+  height: 100%;
+  min-width: 550px;
+  overflow-y: scroll;
+
+  .tile {
+    position:relative;
+    height: 250px;
+    width: 250px;
+    margin: 10px;
+    background: $color-dataxu-white;
+    opacity: 1;
+    border: 1px solid $color-dataxu-blue;
+    box-shadow: 4px 4px 4px grey;
+    -webkit-transition:all linear 1s;
+    transition:all linear 1s;
+
+    .heading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      width: 100%;
+      overflow: hidden;
+      background: $color-dataxu-blue;
+      color: $color-dataxu-white;
+    }
+  }
+  // Tile Animations
+  .tile.ng-enter {
+    opacity: 0;
+  }
+  .tile.ng-enter-stagger {
+    -webkit-transition-delay: 0.1s;
+    transition-delay: 0.1s;
+
+    // To avoid CSS inheritance
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s;
+  }
+  .tile.ng-enter.ng-enter-active {
+    opacity: 1;
+  }
+  .tile.ng-leave, .title.ng-leave-active {
+    opacity: 0;
+    -webkit-transition:all linear 0s;
+    transition:all linear 0s;
+  }
 
 }
 
-footer {
-  position: fixed;
-  top: 750px;
-  bottom: 0;
-  width: 100%;
-  background: $color-dataxu-red;
+.sidebar {
+  flex: 1;
+  background: #D0D2D3;
 }
+
+
+// .search {
+//   position: fixed;
+//   display: flex;
+//   align-items: center;
+//   top: 95px;
+//   height: 55px;
+//   width: 100%;
+//   min-width: 630px;
+//   padding-left: 15px; //remove?
+//   background: $color-dataxu-blue;
+//   box-shadow: 0 4px 2px -2px gray;
+
+//   input {
+//     height: 15px;
+//     width: 400px;
+//     padding: 15px;
+//     font-size: 15px;
+//     background: white;
+//     opacity: .5;
+//   }
+// }
+
+// section {
+//   position: fixed;
+//   display: flex;
+//   top: 150px;
+//   height: 600px;
+//   width: 100%;
+//   background: #6CAAE4;
+
+//   .container {
+//     display: flex;
+//     flex-wrap: wrap;
+//     flex: 2;
+//     align-content: flex-start;
+//     justify-content: left;
+//     height: 100%;
+//     min-width: 650px;
+//     overflow-x: hidden;
+//     overflow-y: scroll;
+
+//     .tile {
+//       height: 200px;
+//       width: 200px;
+//       margin: 10px;
+//       background: $color-dataxu-white;
+//       opacity: 1;
+//       box-shadow: 4px 4px 4px grey;
+//       -webkit-transition:all linear 1s;
+//       transition:all linear 1s;
+
+//       .heading {
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         height: 50px;
+//         width: 200px;
+//         overflow: hidden;
+//         background: $color-dataxu-blue;
+//         color: $color-dataxu-white;
+//       }
+
+//       .selected { //this will be a class added on ng click
+//         position: absolute;
+//         top:0;
+//         left:0;
+//         height: 600px;
+//         width: 100%;
+//         padding: 15px;
+//         z-index: 99;
+//         background: $color-dataxu-white;
+//       }
+//       // selected animations
+//       .selected.ng-hide-add, .selected.ng-hide-remove {
+//         transition:0s linear all;
+//       }
+//       .selected.ng-hide-add-active,
+//       .selected.ng-hide-remove-active {
+//         transition:0.5s linear all;
+//       }
+//       .selected.ng-hide {
+//         // height: 0px; //slider?
+//         width: 0px;
+//       }
+//     }
+
+//     // .tile:hover {
+//     //   transform: scale(1.02);
+//     //   box-shadow: 8px 8px 8px grey;
+//     //   -webkit-transition:all linear 1s;
+//     //   transition:all linear 1s;
+//     // }
+
+//     // Tile Animations
+//     .tile.ng-enter {
+//       opacity: 0;
+//     }
+//     .tile.ng-enter-stagger {
+//       -webkit-transition-delay: 0.1s;
+//       transition-delay: 0.1s;
+
+//       // To avoid CSS inheritance
+//       -webkit-transition-duration: 0s;
+//       transition-duration: 0s;
+//     }
+//     .tile.ng-enter.ng-enter-active {
+//       opacity: 1;
+//     }
+//     .tile.ng-leave, .title.ng-leave-active {
+//       opacity: 0;
+//       -webkit-transition:all linear 0s;
+//       transition:all linear 0s;
+//     }
+//   }
+
+//   .sidebar {
+//     position: relative;
+//     flex: 1;
+//     background: #D0D2D3;
+//   }
+// }
+
+// //temp
+// .clear {
+//   height: 30px;
+//   width: 80px;
+//   float: right;
+
+// }
+
+// footer {
+//   position: fixed;
+//   top: 750px;
+//   bottom: 0;
+//   width: 100%;
+//   background: $color-dataxu-red;
+// }
