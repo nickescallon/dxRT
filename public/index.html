@@ -7,6 +7,7 @@
 
   <div class="container-main">
     <header></header>
+
     <div class="container-search">
       <div class="col-flex">
         <input ng-model="home.search" placeholder="search.."/>
@@ -16,28 +17,9 @@
     </div>
 
     <div class="container-content">
-      <div class="container-tiles">
-
-        <div class="container-tile" ng-repeat="publisher in home.publishers | orderBy:'rating':true | filter:home.search"
-        ng-click="home.select($event, $index)" >
-
-          <div class="heading-tile">
-            <h1>{{ ::publisher.domain.full }}</h1>
-          </div>
-          <div class="content-tile">
-            <p ng-repeat="note in publisher.notes">
-              note: {{ note.text }}
-            </p>
-          </div>
-
-          <div class="square-bottom-right">{{ publisher.rating }}</div>
-
-        </div>
-
-      </div>
-      <div class="sidebar"></div>
-
+      <ng-view></ng-view>
     </div>
+
   </div>
 
 
