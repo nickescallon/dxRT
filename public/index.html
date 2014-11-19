@@ -18,7 +18,7 @@
     <div class="container-content">
       <div class="container-tiles">
 
-        <div class="container-tile" ng-repeat="publisher in home.publishers | filter:home.search"
+        <div class="container-tile" ng-repeat="publisher in home.publishers | orderBy:'rating':true | filter:home.search"
         ng-click="home.select($event, $index)" >
 
           <div class="heading-tile">
@@ -30,7 +30,7 @@
             </p>
           </div>
 
-          <div class="square-bottom-right">{{ home.ratings[publisher.$id].average }}</div>
+          <div class="square-bottom-right">{{ publisher.rating }}</div>
 
         </div>
 
