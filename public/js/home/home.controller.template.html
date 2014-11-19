@@ -1,6 +1,6 @@
 <div class="container-tiles">
 
-  <div class="container-tile" ng-repeat="publisher in home.publishers | orderBy:'rating':true | filter:home.search" ng-click="home.select($event, $index)" >
+  <div class="container-tile" ng-repeat="publisher in home.publishers | orderBy:'rating':true | filter:home.search.filterString" ng-click="home.select($event, $index)" >
 
     <div class="heading-tile">
       <h1>{{ ::publisher.domain.full }}</h1>

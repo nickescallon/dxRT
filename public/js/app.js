@@ -6,6 +6,9 @@
     'ngAnimate',
     'ngRoute',
 
+    //directives
+    'rottenPublishers.directives.search',
+
     //controllers
     'rottenPublishers.controllers.home'
   ])
@@ -18,7 +21,7 @@
     //Routes
     $routeProvider
       .when('/', {
-        templateUrl: '/templates/home.template.html',
+        templateUrl: '/templates/home.controller.template.html',
         controller: 'homeController',
         controllerAs: 'home'
       })

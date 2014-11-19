@@ -3,22 +3,14 @@
   <base href="/">
   <link href="/stylesheets/rotten-publishers.css" media="screen" rel="stylesheet" type="text/css">
 </head>
-<body ng-app="rottenPublishers" ng-controller="homeController as home">
+<body ng-app="rottenPublishers">
 
   <div class="container-main">
     <header></header>
 
-    <div class="container-search">
-      <div class="col-flex">
-        <input ng-model="home.search" placeholder="search.."/>
-      </div>
-      <div class="col-flex"><span>middle</span></div>
-      <div class="col-flex"><span>right</span></div>
-    </div>
+    <ne-search></ne-search>
 
-    <div class="container-content">
-      <ng-view></ng-view>
-    </div>
+    <ng-view class="container-content"></ng-view>
 
   </div>
 

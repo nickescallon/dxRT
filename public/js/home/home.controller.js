@@ -3,17 +3,19 @@
 
   angular.module('rottenPublishers.controllers.home', [
     'rottenPublishers.services.publishers',
-    'rottenPublishers.services.ratings'
+    'rottenPublishers.services.ratings',
+    'rottenPublishers.services.search'
   ])
   .controller('homeController', homeController);
 
-  homeController.$inject = ['publishers', 'ratings'];
-  function homeController(publishers, ratings) {
+  homeController.$inject = ['publishers', 'ratings', 'searchService'];
+  function homeController(publishers, ratings, searchService) {
     var vm = this; //view model
 
     vm.publishers = publishers.data;
     vm.ratings = ratings.data;
     vm.select = select;
+    vm.search = searchService.data;
     // vm.updateScores = updateScores;
 
     function select($event, index) {
