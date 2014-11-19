@@ -19,6 +19,13 @@ module.exports = function(grunt) {
         cwd: 'public/',
         src: 'images/*',
         dest: 'dist/'
+      },
+      templates: {
+        expand: true,
+        cwd: 'public/js/',
+        src: '**/*.html',
+        dest: 'dist/templates/',
+        flatten: true
       }
     },
     concat: {
