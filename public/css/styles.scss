@@ -1,3 +1,4 @@
+//colors
 $color-dataxu-purple: #94348C;
 $color-dataxu-blue: #093D72;
 $color-dataxu-blue-dynamic: #2471C3;
@@ -14,15 +15,19 @@ $color-dataxu-gray-medium: #87898F;
 $color-dataxu-gray-charcoal: #464953;
 $color-dataxu-gray-dark: #2B2D34;
 
-html, body {
+//fonts
+$font-copy: Arial, 'Helvetica Neue';
+$font-headline: Palatino, 'Palatino Linotype';
+
+html, body, h1 {
   margin: 0;
   padding: 0;
+  font-family: $font-copy;
 }
 
 h1 {
-  position: absolute;
-  top: 50%;
   text-align: center;
+  font-size: 15px;
   color: white;
 }
 
@@ -32,7 +37,7 @@ header {
   height: 115px;
   width: 100%;
   min-width: 630px;
-  background: #dc143c;
+  background: $color-dataxu-red;
 }
 
 .search {
@@ -43,8 +48,8 @@ header {
   height: 55px;
   width: 100%;
   min-width: 630px;
-  padding-left: 15px; //
-  background: blue;
+  padding-left: 15px; //remove?
+  background: $color-dataxu-blue;
 
   input {
     height: 15px;
@@ -62,27 +67,39 @@ section {
   top: 150px;
   height: 600px;
   width: 100%;
-  background: #87CEEB;
+  background: #6CAAE4;
 
   .container {
     display: flex;
     flex-wrap: wrap;
     flex: 2;
     align-content: flex-start;
-    justify-content: center;
+    justify-content: left;
     height: 100%;
-    min-width: 630px;
+    min-width: 650px;
+    overflow-x: hidden;
     overflow-y: scroll;
 
     .tile {
       height: 200px;
       width: 200px;
-      margin: 5px;
-      background: #6A5ACD;
+      margin: 10px;
+      background: $color-dataxu-white;
       opacity: 1;
       box-shadow: 4px 4px 4px grey;
       -webkit-transition:all linear 1s;
       transition:all linear 1s;
+
+      .heading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        width: 200px;
+        overflow: hidden;
+        background: $color-dataxu-blue;
+        color: $color-dataxu-white;
+      }
 
       .selected { //this will be a class added on ng click
         position: absolute;
@@ -92,7 +109,7 @@ section {
         width: 100%;
         padding: 15px;
         z-index: 99;
-        background: #6A5ACD;
+        background: $color-dataxu-white;
       }
       // selected animations
       .selected.ng-hide-add, .selected.ng-hide-remove {
@@ -140,7 +157,7 @@ section {
   .sidebar {
     position: relative;
     flex: 1;
-    background: yellow;
+    background: #D0D2D3;
   }
 }
 
@@ -149,6 +166,7 @@ section {
   height: 30px;
   width: 80px;
   float: right;
+
 }
 
 footer {
@@ -156,5 +174,5 @@ footer {
   top: 750px;
   bottom: 0;
   width: 100%;
-  background: #dc143c;
+  background: $color-dataxu-red;
 }

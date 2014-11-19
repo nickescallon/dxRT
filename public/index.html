@@ -15,8 +15,9 @@
     <div class="container">
       <div class="tile" ng-repeat="publisher in home.publishers | filter:home.search"
       ng-click="home.select($event, $index)">
-
-        <div>domain: {{ ::publisher.domain.full }}</div>
+        <div class="heading">
+          <h1>{{ ::publisher.domain.full }}</h1>
+        </div>
         <div>rating: {{ home.ratings[publisher.$id].average }}</div>
 
         <div class="selected" ng-show="home.selected === $index">
