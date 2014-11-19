@@ -47,7 +47,7 @@ function pushRatingsToFirebase(key) {
     3: 0,
     4: 0,
     5: 0,
-    average: 0
+    average: Math.round(Math.random(100) * 100) //for testing
   };
   firebaseTarget.set(payload);
 };
