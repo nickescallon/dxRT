@@ -11,37 +11,27 @@
       <div class="col-flex">
         <input ng-model="home.search" placeholder="search.."/>
       </div>
-      <div class="col-flex">middle</div>
-      <div class="col-flex">right</div>
+      <div class="col-flex"><span>middle</span></div>
+      <div class="col-flex"><span>right</span></div>
     </div>
 
-    <div class="container-content" ng-cloak>
+    <div class="container-content">
       <div class="container-tiles">
 
-        <div class="tile" ng-repeat="publisher in home.publishers | filter:home.search"
-        ng-click="home.select($event, $index)">
-          <div class="heading">
+        <div class="container-tile" ng-repeat="publisher in home.publishers | filter:home.search"
+        ng-click="home.select($event, $index)" >
+
+          <div class="heading-tile">
             <h1>{{ ::publisher.domain.full }}</h1>
           </div>
-          <div>rating: {{ home.ratings[publisher.$id].average }}</div>
-
-          <div class="selected" ng-show="home.selected === $index">
-            <div>domain: {{ ::publisher.domain.full }}</div>
-            <div>rating: {{ home.ratings[publisher.$id].average }}</div>
-            <div ng-repeat="note in publisher.notes">
+          <div class="content-tile">
+            <p ng-repeat="note in publisher.notes">
               note: {{ note.text }}
-            </div>
-            <br>
-            <hr>
-            <br>
-            rating 1: <input type="range"/>
-            <br>
-            rating 2: <input type="range"/>
-            <br>
-            rating 3: <input type="range"/>
-
-            <div class="clear" ng-click="home.select($event)"><h1><</h1></div>
+            </p>
           </div>
+
+          <div class="square-bottom-right">{{ home.ratings[publisher.$id].average }}</div>
+
         </div>
 
       </div>

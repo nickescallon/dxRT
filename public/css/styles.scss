@@ -19,10 +19,27 @@ $color-dataxu-gray-dark: #2B2D34;
 $font-copy: Arial, 'Helvetica Neue';
 $font-headline: Palatino, 'Palatino Linotype';
 
+//scroll bar
+::-webkit-scrollbar-track {
+  background-color: $color-dataxu-gray-light-ultra;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: $color-dataxu-gray-light-ultra;
+}
+::-webkit-scrollbar-thumb {
+  background-color: $color-dataxu-blue-light;
+  border: 2px solid $color-dataxu-blue-light;
+}
+
 html, body, h1 {
   margin: 0;
   padding: 0;
   font-family: $font-copy;
+}
+
+html {
+  overflow-y: scroll;
 }
 
 h1 {
@@ -64,11 +81,15 @@ h1 {
       input {
         width: 400px;
         font-size: 20px;
-        background: white;
+        background: $color-dataxu-white;
         opacity: .5;
       }
       input:focus {
         opacity: 1;
+      }
+
+      span {
+        color: $color-dataxu-white;
       }
     }
   }
@@ -85,24 +106,26 @@ h1 {
   flex-wrap: wrap;
   flex: 2;
   align-content: flex-start;
-  justify-content: left;
   height: 100%;
   min-width: 550px;
   overflow-y: scroll;
 
-  .tile {
+  .container-tile {
     position:relative;
+    display: flex;
+    flex-direction: column;
     height: 250px;
     width: 250px;
     margin: 10px;
     background: $color-dataxu-white;
     opacity: 1;
-    border: 1px solid $color-dataxu-blue;
+    border-left: 1px solid $color-dataxu-gray-light-ultra;
     box-shadow: 4px 4px 4px grey;
+    cursor: pointer;
     -webkit-transition:all linear 1s;
     transition:all linear 1s;
 
-    .heading {
+    .heading-tile {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -112,12 +135,19 @@ h1 {
       background: $color-dataxu-blue;
       color: $color-dataxu-white;
     }
+
+    .content-tile {
+      position:relative;
+      flex:1;
+      width: 100%;
+      padding: 15px;
+    }
   }
   // Tile Animations
-  .tile.ng-enter {
+  .container-tile.ng-enter {
     opacity: 0;
   }
-  .tile.ng-enter-stagger {
+  .container-tile.ng-enter-stagger {
     -webkit-transition-delay: 0.1s;
     transition-delay: 0.1s;
 
@@ -125,20 +155,30 @@ h1 {
     -webkit-transition-duration: 0s;
     transition-duration: 0s;
   }
-  .tile.ng-enter.ng-enter-active {
+  .container-tile.ng-enter.ng-enter-active {
     opacity: 1;
   }
-  .tile.ng-leave, .title.ng-leave-active {
+  .container-tile.ng-leave, .container-tile.ng-leave-active {
     opacity: 0;
     -webkit-transition:all linear 0s;
     transition:all linear 0s;
   }
-
 }
 
 .sidebar {
   flex: 1;
   background: #D0D2D3;
+}
+
+.square-bottom-right {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 35px;
+  height: 35px;
+  font-size: 30px;
+  font-weight: bold;
+  color: $color-dataxu-red;
 }
 
 
