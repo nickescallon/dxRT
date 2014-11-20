@@ -58,7 +58,7 @@ input:focus {
   opacity: 1;
 }
 input.short {
-  width: 250px;
+  width: 95%;
 }
 
 .container-main {
@@ -87,7 +87,7 @@ input.short {
       display: flex;
       flex: 1;
       height: 100%;
-      min-width: 450px;
+      min-width: 560px;
       align-items: center;
       padding: 0px 15px;
 
@@ -193,34 +193,6 @@ input.short {
   position:relative;
   flex: 1;
   background: #D0D2D3;
-
-  .container-side {
-    position:relative;
-    display: flex;
-    margin: 15px;
-    flex-direction: column;
-    height: 400px;
-
-    .container-content-side {
-      flex: 1;
-      flex-direction: column;
-      background: $color-dataxu-white;
-      overflow-y: scroll;
-
-      .content-side {
-        display: flex;
-        align-items: center;
-        height: 20px;
-        padding: 15px;
-        cursor: pointer;
-        border-bottom: 1px solid $color-dataxu-gray-charcoal;
-      }
-
-      .content-side:hover {
-        background: $color-dataxu-gray-light-ultra;
-      }
-    }
-  }
 }
 
 .square-bottom-right {
@@ -231,4 +203,33 @@ input.short {
   font-size: 30px;
   font-weight: bold;
   color: $color-dataxu-red;
+}
+
+//FILTER BOX DIRECTIVE
+.container-side {
+  position:relative;
+  display: flex;
+  margin: 15px;
+  flex-direction: column;
+  height: 400px;
+
+  .container-content-side {
+    flex: 1;
+    flex-direction: column;
+    background: $color-dataxu-white;
+    overflow-y: scroll;
+
+    .content-side {
+      display: flex;
+      align-items: center;
+      height: 20px;
+      padding: 15px;
+      cursor: pointer;
+      border-bottom: 1px solid $color-dataxu-gray-charcoal;
+    }
+
+    .content-side:hover {
+      background: $color-dataxu-gray-light-ultra;
+    }
+  }
 }
