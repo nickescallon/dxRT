@@ -44,6 +44,7 @@ module.exports = function(grunt) {
           '<%=jsVendorDir%>angular/*.js',
           '<%=jsVendorDir%>angular-route/*.js',
           '<%=jsVendorDir%>angular-animate/*.js',
+          '<%=jsVendorDir%>d3/*.js',
           '<%=jsVendorDir%>firebase/*.js',
           '<%=jsVendorDir%>angularfire/dist/*.js',
           '<%=jsVendorDir%>firebase-simple-login/*.js',
