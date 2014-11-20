@@ -100,7 +100,7 @@ function csvToJs(csvRecord) {
 
   //constructed values
   //domains
-  var transformedDomain = csvRecord.Domain.replace(/[^\w]/gi, '');
+  var transformedDomain = csvRecord.Domain.replace(/[^\w\.]/gi, '');
   var splitDomain = transformedDomain.split('.');
   transformed.domainFull = transformedDomain;
   if (splitDomain.length){
@@ -169,7 +169,8 @@ function csvToJs(csvRecord) {
   transformed.inventory['320x50'] = stringToBool(csvRecord['320x50']);
 
   //bid floor price
-  transformed.bidFloorPrice = parseFloat( csvRecord['Bid Floor Price'].substring(1) ) || '';
+  transformed.bidFloorPrice = parseFloat(csvRecord['Bid Floor Price'].substring(1)) || ( Math.round(Math.random(20) * 1000) / 100 );
+  // transformed.bidFloorPrice = parseFloat( csvRecord['Bid Floor Price'].substring(1) ) || '';
 
   return transformed;
 };
