@@ -8,6 +8,7 @@
 
     //directives
     'rottenPublishers.directives.search',
+    'rottenPublishers.directives.filterBox',
 
     //controllers
     'rottenPublishers.controllers.home'

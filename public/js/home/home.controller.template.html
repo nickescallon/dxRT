@@ -21,27 +21,7 @@
   </div>
 
 </div>
+
 <div class="sidebar">
-
-  <div class="container-side">
-
-    <div class="heading">
-      <div class="col-flex-1">
-        <span>Categories</span>
-      </div>
-
-      <div class="col-flex-2">
-        <input class="short" ng-model="home.categoryFilter" placeholder="filter..."/>
-      </div>
-    </div>
-
-    <div class="container-content-side">
-      <div class="content-side" ng-repeat="category in home.categories | filter:home.categoryFilter" ng-click="home.updateSearch(category.name)">
-        {{ ::category.name }}
-      </div>
-    </div>
-
-  </div>
-
-
+<filter-box model="home.categories" key="name" label="categories"></filter-box>
 </div>

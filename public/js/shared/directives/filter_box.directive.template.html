@@ -1,0 +1,19 @@
+<div class="container-side">
+
+  <div class="heading">
+    <div class="col-flex-1">
+      <span>{{ label }}</span>
+    </div>
+
+    <div class="col-flex-2">
+      <input class="short" ng-model="filterString" placeholder="filter..."/>
+    </div>
+  </div>
+
+  <div class="container-content-side">
+    <div class="content-side" ng-repeat="item in model | filter:filterString" ng-click="handler(item[key])">
+      {{ ::item[key] }}
+    </div>
+  </div>
+
+</div>
