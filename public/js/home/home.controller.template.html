@@ -2,7 +2,7 @@
 
   <div class="container-tile" ng-repeat="publisher in home.searchResults=(home.publishers | orderBy:'rating':true | filter:home.search.filterString)" ng-click="home.select($event, $index)" >
 
-    <div class="heading-tile">
+    <div class="heading">
       <h1>{{ ::publisher.domain.full }}</h1>
     </div>
 
@@ -22,7 +22,26 @@
 
 </div>
 <div class="sidebar">
-  <div ng-repeat="category in home.categories">
-    <span ng-click="home.updateSearch(category.name)">{{ ::category.name }}</span>
+
+  <div class="container-side">
+
+    <div class="heading">
+      <div class="col-flex-1">
+        <span>Categories</span>
+      </div>
+
+      <div class="col-flex-2">
+        <input class="short" ng-model="home.categoryFilter" placeholder="filter..."/>
+      </div>
+    </div>
+
+    <div class="container-content-side">
+      <div class="content-side" ng-repeat="category in home.categories | filter:home.categoryFilter" ng-click="home.updateSearch(category.name)">
+        {{ ::category.name }}
+      </div>
+    </div>
+
   </div>
+
+
 </div>

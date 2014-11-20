@@ -48,6 +48,19 @@ h1 {
   color: white;
 }
 
+input {
+  width: 400px;
+  font-size: 20px;
+  background: $color-dataxu-white;
+  opacity: .5;
+}
+input:focus {
+  opacity: 1;
+}
+input.short {
+  width: 250px;
+}
+
 .container-main {
   position: fixed;
   display: flex;
@@ -77,16 +90,6 @@ h1 {
       min-width: 450px;
       align-items: center;
       padding: 0px 15px;
-
-      input {
-        width: 400px;
-        font-size: 20px;
-        background: $color-dataxu-white;
-        opacity: .5;
-      }
-      input:focus {
-        opacity: 1;
-      }
 
       span {
         color: $color-dataxu-white;
@@ -122,18 +125,8 @@ h1 {
     border-left: 1px solid $color-dataxu-gray-light-ultra;
     box-shadow: 4px 4px 4px grey;
     cursor: pointer;
-    -webkit-transition:all linear .1s;
-    transition:all linear .1s;
-
-    .heading-tile {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 50px;
-      overflow: hidden;
-      background: $color-dataxu-blue;
-      color: $color-dataxu-white;
-    }
+    -webkit-transition:all linear .3s;
+    transition:all linear .3s;
 
     .content-tile {
       position:relative;
@@ -141,31 +134,93 @@ h1 {
       padding: 15px;
     }
   }
+  .container-tile:hover {
+    transform: scale(1.02);
+    box-shadow: 8px 8px 8px grey;
+  }
   // Tile Animations
-  // .container-tile.ng-enter {
-  //   opacity: 0;
-  // }
-  // .container-tile.ng-enter-stagger {
-  //   -webkit-transition-delay: 0.1s;
-  //   transition-delay: 0.1s;
+  .container-tile.ng-enter {
+    opacity: 0;
+  }
+  .container-tile.ng-enter-stagger {
+    -webkit-transition-delay: 0.1s;
+    transition-delay: 0.1s;
 
-  //   // To avoid CSS inheritance
-  //   -webkit-transition-duration: 0s;
-  //   transition-duration: 0s;
-  // }
-  // .container-tile.ng-enter.ng-enter-active {
-  //   opacity: 1;
-  // }
-  // .container-tile.ng-leave, .container-tile.ng-leave-active {
-  //   opacity: 0;
-  //   -webkit-transition:all linear 0s;
-  //   transition:all linear 0s;
-  // }
+    // To avoid CSS inheritance
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s;
+  }
+  .container-tile.ng-enter.ng-enter-active {
+    opacity: 1;
+  }
+  .container-tile.ng-leave, .container-tile.ng-leave-active {
+    opacity: 0;
+    -webkit-transition:all linear 0s;
+    transition:all linear 0s;
+  }
+}
+
+.col-flex-1 {
+  flex: 1;
+  align-items: center;
+  padding: 5px;
+}
+
+.col-flex-2 {
+  flex: 1;
+  align-items: center;
+  padding: 5px;
+}
+
+.heading {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  overflow: hidden;
+  background: $color-dataxu-blue;
+  color: $color-dataxu-white;
+
+  span {
+    font-size: 20px;
+    padding: 5px;
+    color: white;
+  }
 }
 
 .sidebar {
+  position:relative;
   flex: 1;
   background: #D0D2D3;
+
+  .container-side {
+    position:relative;
+    display: flex;
+    margin: 15px;
+    flex-direction: column;
+    height: 400px;
+
+    .container-content-side {
+      flex: 1;
+      flex-direction: column;
+      background: $color-dataxu-white;
+      overflow-y: scroll;
+
+      .content-side {
+        display: flex;
+        align-items: center;
+        height: 20px;
+        padding: 15px;
+        cursor: pointer;
+        border-bottom: 1px solid $color-dataxu-gray-charcoal;
+      }
+
+      .content-side:hover {
+        background: $color-dataxu-gray-light-ultra;
+      }
+    }
+  }
 }
 
 .square-bottom-right {
@@ -177,142 +232,3 @@ h1 {
   font-weight: bold;
   color: $color-dataxu-red;
 }
-
-
-// .search {
-//   position: fixed;
-//   display: flex;
-//   align-items: center;
-//   top: 95px;
-//   height: 55px;
-//   width: 100%;
-//   min-width: 630px;
-//   padding-left: 15px; //remove?
-//   background: $color-dataxu-blue;
-//   box-shadow: 0 4px 2px -2px gray;
-
-//   input {
-//     height: 15px;
-//     width: 400px;
-//     padding: 15px;
-//     font-size: 15px;
-//     background: white;
-//     opacity: .5;
-//   }
-// }
-
-// section {
-//   position: fixed;
-//   display: flex;
-//   top: 150px;
-//   height: 600px;
-//   width: 100%;
-//   background: #6CAAE4;
-
-//   .container {
-//     display: flex;
-//     flex-wrap: wrap;
-//     flex: 2;
-//     align-content: flex-start;
-//     justify-content: left;
-//     height: 100%;
-//     min-width: 650px;
-//     overflow-x: hidden;
-//     overflow-y: scroll;
-
-//     .tile {
-//       height: 200px;
-//       width: 200px;
-//       margin: 10px;
-//       background: $color-dataxu-white;
-//       opacity: 1;
-//       box-shadow: 4px 4px 4px grey;
-//       -webkit-transition:all linear 1s;
-//       transition:all linear 1s;
-
-//       .heading {
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//         height: 50px;
-//         width: 200px;
-//         overflow: hidden;
-//         background: $color-dataxu-blue;
-//         color: $color-dataxu-white;
-//       }
-
-//       .selected { //this will be a class added on ng click
-//         position: absolute;
-//         top:0;
-//         left:0;
-//         height: 600px;
-//         width: 100%;
-//         padding: 15px;
-//         z-index: 99;
-//         background: $color-dataxu-white;
-//       }
-//       // selected animations
-//       .selected.ng-hide-add, .selected.ng-hide-remove {
-//         transition:0s linear all;
-//       }
-//       .selected.ng-hide-add-active,
-//       .selected.ng-hide-remove-active {
-//         transition:0.5s linear all;
-//       }
-//       .selected.ng-hide {
-//         // height: 0px; //slider?
-//         width: 0px;
-//       }
-//     }
-
-//     // .tile:hover {
-//     //   transform: scale(1.02);
-//     //   box-shadow: 8px 8px 8px grey;
-//     //   -webkit-transition:all linear 1s;
-//     //   transition:all linear 1s;
-//     // }
-
-//     // Tile Animations
-//     .tile.ng-enter {
-//       opacity: 0;
-//     }
-//     .tile.ng-enter-stagger {
-//       -webkit-transition-delay: 0.1s;
-//       transition-delay: 0.1s;
-
-//       // To avoid CSS inheritance
-//       -webkit-transition-duration: 0s;
-//       transition-duration: 0s;
-//     }
-//     .tile.ng-enter.ng-enter-active {
-//       opacity: 1;
-//     }
-//     .tile.ng-leave, .title.ng-leave-active {
-//       opacity: 0;
-//       -webkit-transition:all linear 0s;
-//       transition:all linear 0s;
-//     }
-//   }
-
-//   .sidebar {
-//     position: relative;
-//     flex: 1;
-//     background: #D0D2D3;
-//   }
-// }
-
-// //temp
-// .clear {
-//   height: 30px;
-//   width: 80px;
-//   float: right;
-
-// }
-
-// footer {
-//   position: fixed;
-//   top: 750px;
-//   bottom: 0;
-//   width: 100%;
-//   background: $color-dataxu-red;
-// }
