@@ -11,6 +11,7 @@ parser.on('readable', function() {
   while(record = parser.read()){
     var jsRecord = csvToJs(record);
     var firebaseKey = getFirebaseUid(jsRecord);
+    jsRecord.key = firebaseKey; //move this
     pushToFirebase(jsRecord, firebaseKey);
   }
 });
@@ -37,7 +38,7 @@ function getFirebaseUid(obj) {
 
 function pushPublisherToFirebase(publisherObj, key) {
   var firebaseTarget = new Firebase(firebaseUrl + 'publishers/' + key);
-  firebaseTarget.set(publisherObj);
+  firebaseTarget.update(publisherObj);
 };
 
 function pushRatingsToFirebase(key) {
