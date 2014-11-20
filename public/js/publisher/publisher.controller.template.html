@@ -1,5 +1,15 @@
 <div class="container-left">
 
+  <header>
+    <div class="title">
+      {{ pub.publisher.domainFull }}
+    </div>
+
+    <div class="container-rating-overall">
+      OVERALL SCORE: {{ pub.rating.average }}
+    </div>
+  </header>
+
   <div class="rating-group">
     <rating-bar model="pub.rating.performance" label="performance" handler="pub.calcAverage()">
     </rating-bar>
@@ -9,10 +19,6 @@
 
     <rating-bar model="pub.rating.reliability" label="reliability" handler="pub.calcAverage()">
     </rating-bar>
-  </div>
-
-  <div class="rating-overall">
-    {{ pub.rating.average }}
   </div>
 
 </div>

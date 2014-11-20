@@ -43,8 +43,6 @@
     };
 
     function calcAverage() {
-      console.log('clicked');
-      console.log(vm.rating);
       vm.rating.average = (vm.rating.performance + vm.rating.performance + vm.rating.usability + vm.rating.reliability) / 4;
     }
 

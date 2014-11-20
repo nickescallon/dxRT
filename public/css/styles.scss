@@ -165,12 +165,33 @@ input.short {
 }
 
 .container-left {
-  display: flex;
-  flex-wrap: wrap;
+  position:relative;
+  // display: flex;
+  // flex-wrap: wrap;
   flex: 2;
-  align-content: flex-start;
+  // align-content: flex-start;
   min-width: 550px;
   overflow-y: scroll;
+
+  header {
+    position: relative;
+    width: 50%;
+    height: 50px;
+    background: white;
+    padding:15px;
+
+    .title {
+      float: left;
+      font-size: 30px;
+      color: black;
+    }
+
+    .container-rating-overall {
+      float: right;
+      display: flex;
+      align-content: center;
+    }
+  }
 }
 
 .col-flex-1 {

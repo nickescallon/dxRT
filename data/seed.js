@@ -37,8 +37,9 @@ function getFirebaseUid(obj) {
 };
 
 function pushPublisherToFirebase(publisherObj, key) {
+  console.log('updateing', key);
   var firebaseTarget = new Firebase(firebaseUrl + 'publishers/' + key);
-  firebaseTarget.update(publisherObj);
+  firebaseTarget.set(publisherObj);
 };
 
 function pushRatingsToFirebase(key) {
@@ -52,7 +53,7 @@ function pushRatingsToFirebase(key) {
     reliability: reliabilityRating,
     average:  ((2*perfRating) + usabilityRating + reliabilityRating) / 4//for testing
   };
-  firebaseTarget.set(payload);
+  firebaseTarget.update(payload);
 };
 
 function pushCategoriesToFirebase(category, key) {
@@ -61,13 +62,14 @@ function pushCategoriesToFirebase(category, key) {
   }
   var firebaseTarget = new Firebase(firebaseUrl + 'categories/' + key);
 
-  firebaseTarget.update({ name: category });
+  firebaseTarget.set({ name: category });
 }
 
 function csvToJs(csvRecord) {
   var VALUE_MAP = {
     //company has a space after it because the source does...
-    'Company ': 'company',
+    'Parent Company ': 'company',
+    'Channel': 'channel',
     'Tier 1 IAB Category': 'category',
     'Audience': 'audience',
     'SSP Affiliation': 'sspAffiliation',
@@ -75,9 +77,12 @@ function csvToJs(csvRecord) {
     'Avails': 'availability',
     'Deal ID': 'dealId',
     'High Viewability': 'highViewability',
-    'Demo': 'demographic',
+    // 'Demo': 'demographic',
+    'Male': 'demoMale',
+    'Female': 'demoFemale',
+    'Age Range': 'ageRange',
     'History': 'history',
-    'Fraud': 'fraud',
+    // 'Fraud': 'fraud',
     'Locale': 'locale',
     '1st Party Data': 'firstPartyData'
   };
@@ -123,13 +128,13 @@ function csvToJs(csvRecord) {
   transformed.contacts.secondary.email = csvRecord['2nd E-mail'];
 
   //channels
-  transformed.channels = {};
-  transformed.channels.display = stringToBool(csvRecord.Display);
-  //the below has a space after the key because the source does...
-  transformed.channels.desktopVideo = stringToBool(csvRecord['Desktop Video ']);
-  transformed.channels.videoSSP = stringToBool(csvRecord['Video SSP']);
-  transformed.channels.mobile = stringToBool(csvRecord.Mobile);
-  transformed.channels.mobileSSP = stringToBool(csvRecord['Mobile SSP']);
+  // transformed.channels = {};
+  // transformed.channels.display = stringToBool(csvRecord.Display);
+  // //the below has a space after the key because the source does...
+  // transformed.channels.desktopVideo = stringToBool(csvRecord['Desktop Video ']);
+  // transformed.channels.videoSSP = stringToBool(csvRecord['Video SSP']);
+  // transformed.channels.mobile = stringToBool(csvRecord.Mobile);
+  // transformed.channels.mobileSSP = stringToBool(csvRecord['Mobile SSP']);
 
   //notes
   transformed.notes = [];
