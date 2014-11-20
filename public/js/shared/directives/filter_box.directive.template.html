@@ -11,7 +11,7 @@
   </div>
 
   <div class="container-content-side">
-    <div class="content-side" ng-repeat="item in model | filter:filterString" ng-click="handler(item[key])">
+    <div class="content-side" ng-repeat="item in model | filter:filterString" ng-click="handler({query: item[key]})">
       {{ ::item[key] }}
     </div>
   </div>

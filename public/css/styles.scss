@@ -72,6 +72,11 @@ input.short {
     height: 55px;
     width: 100%;
     background: $color-dataxu-red;
+
+    img {
+      height: 35px;
+      padding: 10px;
+    }
   }
 
   .container-search {
