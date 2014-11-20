@@ -2,22 +2,26 @@
   'use strict'
 
   angular.module('rottenPublishers.controllers.home', [
+    'rottenPublishers.services.categories',
     'rottenPublishers.services.publishers',
     'rottenPublishers.services.ratings',
     'rottenPublishers.services.search'
   ])
   .controller('homeController', homeController);
 
-  homeController.$inject = ['publishers', 'ratings', 'searchService'];
-  function homeController(publishers, ratings, searchService) {
+  homeController.$inject = ['categories', 'publishers', 'ratings', 'searchService'];
+  function homeController(categories, publishers, ratings, searchService) {
     var vm = this; //view model
 
+    vm.categories = categories.data;
     vm.publishers = publishers.data;
     vm.ratings = ratings.data;
-    vm.select = select;
     vm.search = searchService.data;
     // update scores is a util...
     // vm.updateScores = updateScores
+
+    vm.select = select;
+    vm.updateSearch = searchService.update;
 
     function select($event, index) {
       //TODO: this isnt working well...

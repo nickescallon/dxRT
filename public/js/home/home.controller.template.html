@@ -21,4 +21,8 @@
   </div>
 
 </div>
-<div class="sidebar"></div>
+<div class="sidebar">
+  <div ng-repeat="category in home.categories">
+    <span ng-click="home.updateSearch(category.name)">{{ ::category.name }}</span>
+  </div>
+</div>

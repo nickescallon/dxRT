@@ -8,7 +8,12 @@
     var data = {filterString: ''};
 
     var service = {
-      data: data
+      data: data,
+      update: update
+    };
+
+    function update(string) {
+      service.data.filterString = string;
     };
 
     return service;
