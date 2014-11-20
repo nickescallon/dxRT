@@ -1,6 +1,16 @@
 <div class="container-left">
-LEFT CONTAINER
-{{ pub.publisher | json}}
+
+  <div class="rating-group">
+    <rating-bar model="pub.rating['1']" label="performance">
+    </rating-bar>
+
+    <rating-bar model="pub.rating['2']" label="usability">
+    </rating-bar>
+
+    <rating-bar model="pub.rating['3']" label="reliability">
+    </rating-bar>
+  </div>
+
 </div>
 
 

@@ -10,10 +10,15 @@
     var sync = $firebase(ratings);
 
     var service = {
-      data: sync.$asObject()
+      data: sync.$asObject(),
+      get: get
     };
 
     return service;
+
+    function get(key) {
+      return service.data.$loaded();
+    };
   };
 
 })();

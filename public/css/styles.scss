@@ -246,3 +246,39 @@ input.short {
     }
   }
 }
+
+//RATING BAR
+.rating-group {
+  width: 550px;
+}
+
+.rating-container {
+  display: flex;
+  height: 20px;
+  padding: 15px;
+}
+
+.rating-label, .rating-score {
+  flex: 1;
+  padding: 0px 15px;
+}
+
+.rating-bar {
+  flex: 3;
+  position:relative;
+  display: flex;
+  height: 15px;
+  width: 200px;
+
+  .rating-box {
+    flex: 1;
+    border-right: 3px solid white;
+    background: $color-dataxu-gray-medium;
+  }
+  .rated {
+    background: $color-dataxu-blue;
+  }
+  .unrated {
+    background: $color-dataxu-gray-medium;
+  }
+}

@@ -9,6 +9,7 @@
     //directives
     'rottenPublishers.directives.search',
     'rottenPublishers.directives.filterBox',
+    'rottenPublishers.directives.ratingBar',
 
     //controllers
     'rottenPublishers.controllers.home',

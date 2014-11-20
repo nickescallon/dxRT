@@ -24,6 +24,11 @@
       vm.publisher = publishers.$getRecord(vm.publisherKey);
     });
 
+    ratings.get(vm.publisherKey)
+    .then( function(ratings) {
+      vm.rating = vm.ratings.$getRecord(vm.publisherKey);
+    });
+
     vm.routeToPublisher = routeToPublisher;
     vm.updateSearch = searchService.update;
 
