@@ -198,6 +198,7 @@ input.short {
     .title {
       float: left;
       font-size: 30px;
+      font-weight: bold;
       color: black;
     }
 
@@ -209,10 +210,28 @@ input.short {
   }
 }
 
+.container-logo {
+  flex: 1;
+  height: 200px;
+  width: 200px;
+  border: 1px solid $color-dataxu-gray-charcoal;
+}
+
+.container-flex-3-cols {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 40px;
+  flex: 1;
+}
+
 .col-flex-1 {
   flex: 1;
   align-items: center;
   padding: 5px;
+}
+
+.col-flex-1.top {
+  align-items: top;
 }
 
 .col-flex-2 {
@@ -283,15 +302,35 @@ input.short {
   }
 }
 
+.button-save {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 100px;
+  margin: 15px;
+  color: white;
+  cursor: pointer;
+  background: $color-dataxu-blue;
+}
+
 //RATING BAR
 .rating-group {
-  width: 550px;
+  width: 525px;
+}
+.rating-group.boxed{
+  box-shadow: 4px 4px 4px grey;
+}
+
+.rating-your {
+  padding-left: 40px;
 }
 
 .rating-container {
   display: flex;
   height: 20px;
   padding: 15px;
+  background: white;
 }
 
 .rating-label, .rating-score {
@@ -299,12 +338,17 @@ input.short {
   padding: 0px 15px;
 }
 
+.grey {
+  background: #D0D2D3;
+  flex: 1;
+}
+
 .rating-bar {
   flex: 3;
   position:relative;
   display: flex;
   height: 15px;
-  width: 200px;
+  width: 120px;
 
   .rating-box {
     flex: 1;

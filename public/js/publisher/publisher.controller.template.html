@@ -5,25 +5,57 @@
       {{ pub.publisher.domainFull }}
     </div>
 
-    <div class="container-rating-overall">
+    <!-- <div class="container-rating-overall">
       OVERALL SCORE: {{ pub.rating.average }}
-    </div>
+    </div> -->
   </header>
 
-  <div class="rating-group">
-    <rating-bar model="pub.rating.performance" label="performance" handler="pub.calcAverage()">
-    </rating-bar>
+  <div class="container-flex-3-cols">
+    <div class="col-flex-1">
+      <div class="container-logo">LOGO!</div>
+    </div>
+    <div class="col-flex-1">
 
-    <rating-bar model="pub.rating.usability" label="usability" handler="pub.calcAverage()">
-    </rating-bar>
 
-    <rating-bar model="pub.rating.reliability" label="reliability" handler="pub.calcAverage()">
-    </rating-bar>
+    </div>
+
+    <div class="col-flex-1 top">
+      <div class="rating-group boxed">
+        <div class="heading"><span style="float:left">Total score</span><span style="float:right">{{ pub.rating.average }}</span></div>
+        <rating-bar model="pub.rating.performance" label="performance" handler="pub.calcAverage()">
+        </rating-bar>
+
+        <rating-bar model="pub.rating.usability" label="usability" handler="pub.calcAverage()">
+        </rating-bar>
+
+        <rating-bar model="pub.rating.reliability" label="reliability" handler="pub.calcAverage()">
+        </rating-bar>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container-flex-3-cols grey">
+
+    <div class="rating-your">
+      <div class="col-flex-1 top">
+        <div class="rating-group boxed">
+          <div class="heading"><span style="float:left">Your Rating</span><span style="float:right">{{ pub.userRating.average > 0 &&  pub.userRating.average || 0 }}</span></div>
+          <rating-bar model="pub.userRating.performance" label="performance" handler="pub.calcAverage()">
+          </rating-bar>
+
+          <rating-bar model="pub.userRating.usability" label="usability" handler="pub.calcAverage()">
+          </rating-bar>
+
+          <rating-bar model="pub.userRating.reliability" label="reliability" handler="pub.calcAverage()">
+          </rating-bar>
+        </div>
+      </div>
+
+      <div class="button-save" ng-click="pub.save()"> SAVE </div>
+    </div>
+
   </div>
 
 </div>
 
-
-<div class="sidebar">
-RIGHT CONTAINER
-</div>
