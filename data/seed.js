@@ -22,6 +22,9 @@ readStream.pipe(parser);
 
 /**************HELPERS**************/
 
+//hack for uniques
+var ct = {};
+
 function pushToFirebase(obj, key) {
   pushPublisherToFirebase(obj, key)
   pushRatingsToFirebase(key);
@@ -39,7 +42,7 @@ function getFirebaseUid(obj) {
 function pushPublisherToFirebase(publisherObj, key) {
   console.log('updateing', key);
   var firebaseTarget = new Firebase(firebaseUrl + 'publishers/' + key);
-  firebaseTarget.set(publisherObj);
+  firebaseTarget.update(publisherObj);
 };
 
 function pushRatingsToFirebase(key) {
@@ -60,9 +63,15 @@ function pushCategoriesToFirebase(category, key) {
   if (category == null || '') {
     return;
   }
+
+  if (ct[category] != null) {
+    return;
+  }
+
+  ct[category] = true;
   var firebaseTarget = new Firebase(firebaseUrl + 'categories/' + key);
 
-  firebaseTarget.set({ name: category });
+  firebaseTarget.update({ name: category });
 }
 
 function csvToJs(csvRecord) {

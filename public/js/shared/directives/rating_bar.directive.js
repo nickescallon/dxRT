@@ -34,7 +34,7 @@
 
         boxes.each(function(d, i) {
           var box = d3.select(this);
-          if (i <= clickedIndex) {
+          if (i+1 <= clickedIndex) {
             box.attr('class', 'rating-box rated'); //dataxu blue
           } else {
             box.attr('class', 'rating-box unrated'); //dataxu grey light
@@ -56,7 +56,7 @@
 
         });
         scope.$apply(function() {
-          scope.model = i;
+          scope.model = i+1;
           scope.handler();
         })
       };
