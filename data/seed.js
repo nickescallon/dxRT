@@ -33,7 +33,7 @@ function getFirebaseUid(obj) {
   // We should enforce that domains must be present in seed
   // TODO: escape these keys properly - path can't contain ".", "#", "$", "[", or "]"
   var key = obj.domainFull || obj.company;
-  return key.split('/')[0].split('.').join('');
+  return key.split('/').join('').split('.').join('').split(' ').join('');
 };
 
 function pushPublisherToFirebase(publisherObj, key) {
