@@ -11,7 +11,8 @@
       replace: 'true',
       scope: {
         model: '=',
-        label: '@'
+        label: '@',
+        handler: '&'
       },
       link: link
     }
@@ -28,11 +29,24 @@
 
       boxes.on('click', handler)
 
+      scope.$watch('model', function(newVal, oldVal) {
+        var clickedIndex = newVal;
+
+        boxes.each(function(d, i) {
+          var box = d3.select(this);
+          if (i <= clickedIndex) {
+            box.attr('class', 'rating-box rated'); //dataxu blue
+          } else {
+            box.attr('class', 'rating-box unrated'); //dataxu grey light
+          }
+
+        });
+      });
+
       function handler(d,i) {
         var clickedIndex = i;
-        console.log('clickedIndex', clickedIndex);
+
         boxes.each(function(d, i) {
-          console.log('iteration index', i);
           var box = d3.select(this);
           if (i <= clickedIndex) {
             box.attr('class', 'rating-box rated'); //dataxu blue
@@ -43,6 +57,7 @@
         });
         scope.$apply(function() {
           scope.model = i;
+          scope.handler();
         })
       };
 

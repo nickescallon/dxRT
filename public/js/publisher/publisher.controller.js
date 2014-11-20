@@ -9,8 +9,8 @@
   ])
   .controller('publisherController', publisherController);
 
-  publisherController.$inject = ['$location', '$routeParams', 'categories', 'publishers', 'ratings', 'searchService'];
-  function publisherController($location, $routeParams, categories, publishers, ratings, searchService) {
+  publisherController.$inject = ['$scope', '$location', '$routeParams', 'categories', 'publishers', 'ratings', 'searchService'];
+  function publisherController($scope, $location, $routeParams, categories, publishers, ratings, searchService) {
     var vm = this; //view model
 
     vm.publisherKey = $routeParams.pid;
@@ -18,6 +18,7 @@
     vm.categories = categories.data;
     vm.ratings = ratings.data;
     vm.search = searchService.data;
+    vm.calcAverage = calcAverage;
 
     publishers.get(vm.publisherKey)
     .then( function(publishers) {
@@ -26,7 +27,9 @@
 
     ratings.get(vm.publisherKey)
     .then( function(ratings) {
-      vm.rating = vm.ratings.$getRecord(vm.publisherKey);
+      vm.rating = vm.ratings[vm.publisherKey];
+
+      vm.calcAverage();
     });
 
     vm.routeToPublisher = routeToPublisher;
@@ -38,6 +41,12 @@
       }
       $location.path('/publishers/' + publisher.key);
     };
+
+    function calcAverage() {
+      console.log('clicked');
+      console.log(vm.rating);
+      vm.rating.average = (vm.rating.performance + vm.rating.performance + vm.rating.usability + vm.rating.reliability) / 4;
+    }
 
   };
 

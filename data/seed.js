@@ -43,13 +43,14 @@ function pushPublisherToFirebase(publisherObj, key) {
 
 function pushRatingsToFirebase(key) {
   var firebaseTarget = new Firebase(firebaseUrl + 'ratings/' + key);
+  var perfRating = parseInt( Math.round(Math.random(100) * 100) /10 );
+  var usabilityRating = parseInt( Math.round(Math.random(100) * 100) /10 );
+  var reliabilityRating = parseInt( Math.round(Math.random(100) * 100) /10 );
   var payload = {
-    1: 0,
-    2: 0,
-    3: 0,
-    4: 0,
-    5: 0,
-    average: Math.round(Math.random(100) * 100) //for testing
+    performance: perfRating,
+    usability: usabilityRating,
+    reliability: reliabilityRating,
+    average:  ((2*perfRating) + usabilityRating + reliabilityRating) / 4//for testing
   };
   firebaseTarget.set(payload);
 };

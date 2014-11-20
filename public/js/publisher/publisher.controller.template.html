@@ -1,14 +1,18 @@
 <div class="container-left">
 
   <div class="rating-group">
-    <rating-bar model="pub.rating['1']" label="performance">
+    <rating-bar model="pub.rating.performance" label="performance" handler="pub.calcAverage()">
     </rating-bar>
 
-    <rating-bar model="pub.rating['2']" label="usability">
+    <rating-bar model="pub.rating.usability" label="usability" handler="pub.calcAverage()">
     </rating-bar>
 
-    <rating-bar model="pub.rating['3']" label="reliability">
+    <rating-bar model="pub.rating.reliability" label="reliability" handler="pub.calcAverage()">
     </rating-bar>
+  </div>
+
+  <div class="rating-overall">
+    {{ pub.rating.average }}
   </div>
 
 </div>
