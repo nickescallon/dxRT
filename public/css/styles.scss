@@ -122,8 +122,8 @@ h1 {
     border-left: 1px solid $color-dataxu-gray-light-ultra;
     box-shadow: 4px 4px 4px grey;
     cursor: pointer;
-    -webkit-transition:all linear 1s;
-    transition:all linear 1s;
+    -webkit-transition:all linear .1s;
+    transition:all linear .1s;
 
     .heading-tile {
       display: flex;
@@ -142,25 +142,25 @@ h1 {
     }
   }
   // Tile Animations
-  .container-tile.ng-enter {
-    opacity: 0;
-  }
-  .container-tile.ng-enter-stagger {
-    -webkit-transition-delay: 0.1s;
-    transition-delay: 0.1s;
+  // .container-tile.ng-enter {
+  //   opacity: 0;
+  // }
+  // .container-tile.ng-enter-stagger {
+  //   -webkit-transition-delay: 0.1s;
+  //   transition-delay: 0.1s;
 
-    // To avoid CSS inheritance
-    -webkit-transition-duration: 0s;
-    transition-duration: 0s;
-  }
-  .container-tile.ng-enter.ng-enter-active {
-    opacity: 1;
-  }
-  .container-tile.ng-leave, .container-tile.ng-leave-active {
-    opacity: 0;
-    -webkit-transition:all linear 0s;
-    transition:all linear 0s;
-  }
+  //   // To avoid CSS inheritance
+  //   -webkit-transition-duration: 0s;
+  //   transition-duration: 0s;
+  // }
+  // .container-tile.ng-enter.ng-enter-active {
+  //   opacity: 1;
+  // }
+  // .container-tile.ng-leave, .container-tile.ng-leave-active {
+  //   opacity: 0;
+  //   -webkit-transition:all linear 0s;
+  //   transition:all linear 0s;
+  // }
 }
 
 .sidebar {

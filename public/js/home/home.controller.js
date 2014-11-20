@@ -16,7 +16,8 @@
     vm.ratings = ratings.data;
     vm.select = select;
     vm.search = searchService.data;
-    // vm.updateScores = updateScores;
+    // update scores is a util...
+    // vm.updateScores = updateScores
 
     function select($event, index) {
       //TODO: this isnt working well...
