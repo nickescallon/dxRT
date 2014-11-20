@@ -33,7 +33,7 @@ function getFirebaseUid(obj) {
   // We should enforce that domains must be present in seed
   // TODO: escape these keys properly - path can't contain ".", "#", "$", "[", or "]"
   var key = obj.domainFull || obj.company;
-  return key.split('/').join('').split('.').join('').split(' ').join('');
+  return key.replace(/[^\w]/gi, '');
 };
 
 function pushPublisherToFirebase(publisherObj, key) {
@@ -58,8 +58,7 @@ function pushCategoriesToFirebase(category, key) {
   if (category == null || '') {
     return;
   }
-  categoryKey = category.split('/').join('').split('&').join('').split(' ').join('');
-  var firebaseTarget = new Firebase(firebaseUrl + 'categories/' + categoryKey);
+  var firebaseTarget = new Firebase(firebaseUrl + 'categories/' + key);
 
   firebaseTarget.update({ name: category });
 }
@@ -101,7 +100,7 @@ function csvToJs(csvRecord) {
 
   //constructed values
   //domains
-  var transformedDomain = csvRecord.Domain;
+  var transformedDomain = csvRecord.Domain.replace(/[^\w]/gi, '');
   var splitDomain = transformedDomain.split('.');
   transformed.domainFull = transformedDomain;
   if (splitDomain.length){
