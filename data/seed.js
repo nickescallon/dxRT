@@ -24,6 +24,7 @@ readStream.pipe(parser);
 function pushToFirebase(obj, key) {
   pushPublisherToFirebase(obj, key)
   pushRatingsToFirebase(key);
+  pushCategoriesToFirebase(obj.category, key)
 };
 
 function getFirebaseUid(obj) {
@@ -52,11 +53,21 @@ function pushRatingsToFirebase(key) {
   firebaseTarget.set(payload);
 };
 
+function pushCategoriesToFirebase(category, key) {
+  if (category == null || '') {
+    return;
+  }
+  categoryKey = category.split('/').join('').split('&').join('').split(' ').join('');
+  var firebaseTarget = new Firebase(firebaseUrl + 'categories/' + categoryKey);
+
+  firebaseTarget.update({ name: category });
+}
+
 function csvToJs(csvRecord) {
   var VALUE_MAP = {
     //company has a space after it because the source does...
     'Company ': 'company',
-    'Tier 1 IAB Category': 'tier1IABCategory',
+    'Tier 1 IAB Category': 'category',
     'Audience': 'audience',
     'SSP Affiliation': 'sspAffiliation',
     'Always On': 'alwaysOn',
