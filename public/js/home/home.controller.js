@@ -9,25 +9,25 @@
   ])
   .controller('homeController', homeController);
 
-  homeController.$inject = ['categories', 'publishers', 'ratings', 'searchService'];
-  function homeController(categories, publishers, ratings, searchService) {
+  homeController.$inject = ['$location', 'categories', 'publishers', 'ratings', 'searchService'];
+  function homeController($location, categories, publishers, ratings, searchService) {
     var vm = this; //view model
 
     vm.categories = categories.data;
     vm.publishers = publishers.data;
     vm.ratings = ratings.data;
     vm.search = searchService.data;
-    // update scores is a util...
+    // update scores is a temporary util...
     // vm.updateScores = updateScores
 
-    vm.select = select;
+    vm.routeToPublisher = routeToPublisher;
     vm.updateSearch = searchService.update;
 
-    function select($event, index) {
-      //TODO: this isnt working well...
-      $event.preventDefault();
-      $event.stopPropagation();
-      vm.selected = index;
+    function routeToPublisher(publisher) {
+      if (publisher == null || publisher.key === '') {
+        return;
+      }
+      $location.path('/publishers/' + publisher.key);
     };
 
     function updateScores() {
