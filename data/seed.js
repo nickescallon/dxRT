@@ -31,7 +31,7 @@ function getFirebaseUid(obj) {
   // Right now we use domain as the unique key, or else company name
   // We should enforce that domains must be present in seed
   // TODO: escape these keys properly - path can't contain ".", "#", "$", "[", or "]"
-  var key = obj.domain.full || obj.company;
+  var key = obj.domainFull || obj.company;
   return key.split('/')[0].split('.').join('');
 };
 
@@ -100,16 +100,15 @@ function csvToJs(csvRecord) {
 
   //constructed values
   //domains
-  transformed.domain = {}
   var transformedDomain = csvRecord.Domain;
   var splitDomain = transformedDomain.split('.');
-  transformed.domain.full = transformedDomain;
+  transformed.domainFull = transformedDomain;
   if (splitDomain.length){
-    transformed.domain.name = splitDomain[0];
-    transformed.domain.suffix = splitDomain[1] ?  '.' + splitDomain[1] : '';
+    transformed.domainName = splitDomain[0];
+    transformed.domainSuffix = splitDomain[1] ?  '.' + splitDomain[1] : '';
   } else {
-    transformed.domain.name = '';
-    transformed.domain.suffix = '';
+    transformed.domainName = '';
+    transformed.domainSuffix = '';
   }
 
   //contacts
