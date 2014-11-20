@@ -7,11 +7,18 @@
     </div>
 
     <div class="content-tile">
-      <ul>
-        <li> Floor Price: {{ ::publisher.bidFloorPrice | currency }} </li>
-        <li> Demographic: {{ ::publisher.demographic }}</li>
-      </ul>
-
+      <div class="container-row-tile">
+        <div class="col-flex-1">
+          <div class="row-tile"><strong>Floor Price:</strong></div>
+          <div class="row-tile"><strong>Demographic:</strong></div>
+          <div class="row-tile"><strong>Age Range:</strong></div>
+        </div>
+        <div class="col-flex-1">
+          <div class="row-tile right">{{ ::publisher.bidFloorPrice | currency }}</div>
+          <div class="row-tile right">M: {{ ::publisher.demoMale}}% / F: {{::publisher.demoFemale }}%</div>
+          <div class="row-tile right">{{ ::publisher.ageRange}} </div>
+        </div>
+      </div>
     </div>
 
     <div class="square-bottom-right">{{ publisher.rating }}</div>
