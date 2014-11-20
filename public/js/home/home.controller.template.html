@@ -7,10 +7,11 @@
     </div>
 
     <div class="content-tile">
-      <p> category: {{ ::publisher.category }}
-      <p ng-repeat="note in publisher.notes">
-        note: {{ ::note.text }}
-      </p>
+      <ul>
+        <li> Floor Price: {{ ::publisher.bidFloorPrice | currency }} </li>
+        <li> Demographic: {{ ::publisher.demographic }}</li>
+      </ul>
+
     </div>
 
     <div class="square-bottom-right">{{ publisher.rating }}</div>
@@ -22,8 +23,8 @@
 
 </div>
 
-<div class="sidebar" ng-click="home.updateScores()">
-<!-- <div class="sidebar"> -->
+<!-- <div class="sidebar" ng-click="home.updateScores()"> -->
+<div class="sidebar">
   <filter-box model="home.publishers" key="company" label="publishers" handler="home.updateSearch(query)"></filter-box>
   <filter-box model="home.categories" key="name" label="categories" handler="home.updateSearch(query)"></filter-box>
 </div>

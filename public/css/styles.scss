@@ -164,6 +164,15 @@ input.short {
   }
 }
 
+.container-left {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 2;
+  align-content: flex-start;
+  min-width: 550px;
+  overflow-y: scroll;
+}
+
 .col-flex-1 {
   flex: 1;
   align-items: center;

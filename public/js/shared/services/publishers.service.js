@@ -10,10 +10,15 @@
     var sync = $firebase(publishers);
 
     var service = {
-      data: sync.$asArray()
+      data: sync.$asArray(),
+      get: get
     };
 
     return service;
+
+    function get(key) {
+      return service.data.$loaded();
+    };
   };
 
 })();

@@ -11,7 +11,8 @@
     'rottenPublishers.directives.filterBox',
 
     //controllers
-    'rottenPublishers.controllers.home'
+    'rottenPublishers.controllers.home',
+    'rottenPublishers.controllers.publisher'
   ])
   .config(config)
 
@@ -25,6 +26,11 @@
         templateUrl: '/templates/home.controller.template.html',
         controller: 'homeController',
         controllerAs: 'home'
+      })
+      .when('/publishers/:pid/', {
+        templateUrl: '/templates/publisher.controller.template.html',
+        controller: 'publisherController',
+        controllerAs: 'pub'
       })
       .otherwise({
         template: '<div>Otherwise!</div>'
