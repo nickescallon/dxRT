@@ -179,6 +179,10 @@ input.short {
   font-size: 12px;
 }
 
+.row-pub {
+  flex: 1;
+}
+
 .container-left {
   position:relative;
   // display: flex;
@@ -231,7 +235,12 @@ input.short {
 }
 
 .col-flex-1.top {
-  align-items: top;
+  display: flex;
+  flex-direction:column;
+  // align-items: top;
+}
+.col-flex-1.pub {
+  display: flex;
 }
 
 .col-flex-2 {

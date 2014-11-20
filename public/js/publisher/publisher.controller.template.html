@@ -11,12 +11,30 @@
   </header>
 
   <div class="container-flex-3-cols">
-    <div class="col-flex-1">
+    <div class="col-flex-1 pub">
       <div class="container-logo">LOGO!</div>
     </div>
-    <div class="col-flex-1">
 
+    <div class="col-flex-1 pub">
+        <div class="col-flex-1 top">
+          <div class="row-pub"><strong>Company:</strong></div>
+          <div class="row-pub"><strong>Vertical:</strong></div>
+          <div class="row-pub"><strong>Channel:</strong></div>
+          <div class="row-pub"><strong>Affiliation:</strong></div>
+          <!-- <div class="row-pub"><strong>Audience:</strong></div> -->
+          <div class="row-pub"><strong>Gender:</strong></div>
+          <div class="row-pub"><strong>Age Range:</strong></div>
+        </div>
 
+        <div class="col-flex-1 top">
+          <div class="row-pub right">{{ ::pub.publisher.company || '' }}</div>
+          <div class="row-pub right">{{ ::pub.publisher.category|| '' }}</div>
+          <div class="row-pub right">{{ ::pub.publisher.channel || '' }}</div>
+          <div class="row-pub right">{{ ::pub.publisher.sspAffiliation || ''}}</div>
+          <!-- <div class="row-pub right">{{ ::pub.publisher.audience || ''}}</div> -->
+          <div class="row-pub right">M: {{ ::pub.publisher.demoMale}}% / F: {{::pub.publisher.demoFemale }}%</div>
+          <div class="row-pub right">{{ ::pub.publisher.ageRange || ''}} </div>
+        </div>
     </div>
 
     <div class="col-flex-1 top">
